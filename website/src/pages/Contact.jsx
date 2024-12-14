@@ -6,7 +6,7 @@ import SignupEmail from '../components/SignupEmail'
 
 const Contact = () => {
   return (
-    <div className='px-5'>
+    <div>
       <div className='text-center text-2xl pt-10 border-t'>
         <Title text1={'CONTACT'} text2={'US'} />
       </div>

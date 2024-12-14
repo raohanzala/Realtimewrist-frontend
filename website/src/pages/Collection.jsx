@@ -131,7 +131,6 @@ const Collection = () => {
   }, [category, subCategory, search, showSearch, pageProducts]);
 
   useEffect(() => {
-    // Sort only if filterProducts has been set
     if (filterProducts.length > 0) {
       sortProduct(filterProducts);
     }
@@ -182,11 +181,9 @@ const Collection = () => {
         </div>
       </div>
 
-      {/* Right Side */}
       <div className='flex-1'>
         <div className="flex justify-between text-base sm:text-2xl mb-4">
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
-          {/* Product Sort */}
           <select onChange={(e) => setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
             <option value="relevant">Sort by : Relevant</option>
             <option value="low-high">Sort by : Low to High</option>
@@ -194,7 +191,6 @@ const Collection = () => {
           </select>
         </div>
 
-        {/* Map Products */}
         <div className='relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
           {filterProducts.length > 0 && (
             filterProducts.map((item) => (
@@ -205,21 +201,18 @@ const Collection = () => {
                 newPrice={item.newPrice}
                 oldPrice={item.oldPrice}
                 id={item._id}
-                image={assets.rolex_yatch_master_1}
+                image={item.image}
                 size={item.sizes}
               />
             ))
           )}
         </div>
 
-        {/* Infinite Scroll Loader */}
-
-<div className='py-5'>
-
-        {isLoading && <LoadingSpinner/>}
-</div>
+        <div className='py-5'>
+          {isLoading && <LoadingSpinner />}
+        </div>
         <div ref={loaderRef} className='h-10 w-full bg-red-500'></div>
-        { !hasMore || pageProducts.length === 0 && <p className='text-center text-gray-500 mt-4'>No more products to load</p>}
+        {!hasMore && <p className='text-center text-gray-500 mt-4'>No more products to load</p>}
       </div>
     </div>
   );

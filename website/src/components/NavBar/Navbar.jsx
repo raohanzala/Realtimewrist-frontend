@@ -16,6 +16,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdOutlineMenu } from "react-icons/md";
 import SearchBar from '../SearchBar'
+import CartDrawer from '../CartDrawer'
 
 
 
@@ -24,6 +25,7 @@ const Navbar = ({ showSearch, setShowSearch }) => {
   const [visible, setVisible] = useState(false)
   const [scrolled, setScrolled] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isOpen, setIsOpen] = useState(false)
 
 
   const { getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext)
@@ -92,13 +94,15 @@ const Navbar = ({ showSearch, setShowSearch }) => {
             </div>}
           </div>
 
-          <Link to='/cart' className='relative pl-2'>
+          <div onClick={()=> setIsOpen(true)}  className='relative pl-2'>
             <div className='text-white text-xl'>
               <IoMdCart />
             </div>
             <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-[red] text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
-          </Link>
+          </div>
         </div>
+
+        <CartDrawer isOpen={isOpen} />
 
 
         {/* ------------- Navbar for Small Screens --------------- */}

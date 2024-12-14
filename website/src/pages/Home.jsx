@@ -10,7 +10,6 @@ import ServiceSection from '../components/ServiceSection'
 import CategoryCollection from '../components/CategoryCollection'
 import TestimonialSection from '../components/TestimonialSection'
 import WhatsAppChat from '../components/WhatsAppChat'
-import CartDrawer from '../components/CartDrawer'
 
 const Home = () => {
 
@@ -32,7 +31,6 @@ const Home = () => {
       <ServiceSection />
       {/* <SignupEmail /> */}
       <NewsLetterBox/>
-      <CartDrawer/>
       <WhatsAppChat/>
     </div>
   )

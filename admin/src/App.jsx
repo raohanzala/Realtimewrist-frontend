@@ -16,6 +16,7 @@ import { ShopContext } from './contexts/ShopContext';
 import LoadingLogo from './components/LoadingLogo';
 import PublicRoute from './components/PublicRoute'
 import PrivateRoute from './components/PrivateRoute';
+import Users from './pages/Users';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
 export const currency = 'Rs.'
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/add" element={< AddProduct />} />
                 <Route path="/list" element={< ListProduct />} />
                 <Route path="/orders" element={< Orders />} />
+                <Route path="/users" element={< Users />} />
                 <Route path="/notifications" element={< Notifications />} />
                 <Route path="/profile" element={< Profile />} />
               </Route>

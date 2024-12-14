@@ -12,7 +12,6 @@ import CategoryItem from './CategoryItem';
 const Category = () => {
 
   const { category } = useContext(ShopContext)
-  console.log(category)
 
   const categories = [
     {
@@ -22,34 +21,10 @@ const Category = () => {
       link: "/automatic",
     },
     {
-      id: 2,
-      title: "Quartz",
-      image: assets.hublot_senna_1,
-      link: "/quartz",
-    },
-    {
-      id: 3,
-      title: "Chrono",
-      image: assets.omega_speedmaster,
-      link: "/chronograph",
-    },
-    {
       id: 4,
       title: "Luxury",
       image: assets.rolex_yatch_master_1,
       link: "/luxury",
-    },
-    {
-      id: 5,
-      title: "Chain",
-      image: assets.omega_speedmaster,
-      link: "/chain",
-    },
-    {
-      id: 6,
-      title: "Japanese",
-      image: assets.hublot_senna_1,
-      link: "/japanese",
     },
     {
       id: 6,
@@ -71,6 +46,13 @@ const Category = () => {
         <Swiper
           modules={[Navigation, Autoplay]}
           spaceBetween={10}
+          breakpoints={{
+            320: { slidesPerView: 3 },
+            480: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 },
+            1280: { slidesPerView: 7 },
+          }}
           slidesPerView={7}
           navigation={{
             prevEl: ".custom-prev",

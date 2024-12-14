@@ -3,7 +3,6 @@ import React, { useContext, memo, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { assets } from '../../../frontend/src/assets/assets';
 
 const ProductItem = memo(({ id, description, size, image, name, newPrice, oldPrice }) => {
   // const { currency = 'PKR' } = useContext(ShopContext);
@@ -44,10 +43,10 @@ const ProductItem = memo(({ id, description, size, image, name, newPrice, oldPri
         {/* Image Section */}
         <div className="relative overflow-hidden aspect-w-1 aspect-h-1 w-full">
           {/* First Image (Default/Always Visible) */}
-          <img
-            src={image}
+          <LazyLoadImage
+            src={image[0]}
             effect="blur"
-            className={`absolute w-full h-full h-40 object-cover transition-transform transition-opacity duration-500 ease-in-out ${hasMultipleImages && isHovered ? 'opacity-0 scale-100' : 'opacity-100 scale-100'
+            className={`absolute w-full h-full object-cover transition-transform transition-opacity duration-500 ease-in-out ${hasMultipleImages && isHovered ? 'opacity-0 scale-100' : 'opacity-100 scale-100'
               }`}
             style={{
               transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
@@ -57,7 +56,7 @@ const ProductItem = memo(({ id, description, size, image, name, newPrice, oldPri
           {/* Second Image (Only if hover and multiple images) */}
           {hasMultipleImages && isHovered && (
             <LazyLoadImage
-              src={image}
+              src={image[1]}
               effect="blur"
               className={`absolute w-full h-full object-cover transition-transform transition-opacity duration-500 ease-in-out ${isHovered ? 'opacity-100 scale-110' : 'opacity-0 scale-100'
                 }`}

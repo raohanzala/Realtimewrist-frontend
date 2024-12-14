@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { assets } from '../../../frontend/src/assets/assets';
 import axios from 'axios';
 import { backendUrl } from '../App';
 import { ShopContext } from '../contexts/ShopContext';
 import Button from './BUtton';
+import { assets } from '../assets/assets';
 
 const AddProductModal = ({onClose}) => {
   const [image1, setImage1] = useState(false);

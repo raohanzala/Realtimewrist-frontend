@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { backendUrl } from '../App';
 import { FaBell } from "react-icons/fa";
 import NotificationsPopup from './NotificationsPopup';
 import adminPhoto from '../assets/admin-photo.jpeg';
@@ -9,11 +10,10 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import { io } from 'socket.io-client';
 import { useEffect } from 'react';
-import { backendUrl } from '../App';
 
-const socket = io(backendUrl)
 
 function Header() {
+const socket = io(backendUrl)
   const [hasNotification, setHasNotification] = useState([]);
   const [openNotificationPopup, setOpenNotificationPopup] = useState(false)
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ function Header() {
     return () => socket.off('notification');
   }, []);
 
-  const handleNotification = ()=> {
-    setOpenNotificationPopup((open)=> !open)
+  const handleNotification = () => {
+    setOpenNotificationPopup((open) => !open)
   }
 
   const handleLogout = () => {
@@ -82,7 +82,7 @@ function Header() {
                 className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 animate-ping"
               ></span>
             )}
-            {hasNotification.length >0 && (
+            {hasNotification.length > 0 && (
               <span
                 className="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500"
               ></span>

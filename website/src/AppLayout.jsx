@@ -26,7 +26,7 @@ const AppLayout = ({ children }) => {
       <Navbar setShowSearch={setShowSearch} showSearch={showSearch} />
       {showSearch && <SearchBar  setShowSearch={setShowSearch}/>}
 
-      <div className="pt-[125px] pb-24">
+      <div className="pt-[125px] pb-24 px-5">
         <ToastContainer />
         {children}
       </div>

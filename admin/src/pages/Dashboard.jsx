@@ -4,6 +4,7 @@ import Box from "../components/Box";
 import HeadingLink from "../components/HeadingLink";
 import Loader from "../components/Loader";
 import { IoMdMore } from 'react-icons/io';
+import { assets } from "../assets/assets";
 
 const Dashboard = () => {
   const { setPageTitle, allUsers, formatAmount, orders, initialLoading, allProducts, timestampToShortDate, productLoading,
@@ -93,53 +94,89 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-[2fr_1fr] gap-6 mb-6">
 
-      <Box className='backdrop-blur-lg bg-none'>
-        <HeadingLink title='Recent Orders' link='/orders' />
-        <div className="overflow-x-auto">
-          {ordersLoading ? <p>Loading...</p> : orders?.length > 0 ?
-            <div>
-            {
-              orders.slice(0, 3).map((order, index)=> ( <div className={ `py-3 flex justify-between ${index !== 2 && 'border-b'} gap-5`} key={order._id}>
-                <div className="space-y-1">
+        <Box className='backdrop-blur-lg bg-none'>
+          <HeadingLink title='Recent Orders' link='/orders' />
+          <div className="overflow-x-auto">
+            {ordersLoading ? <p>Loading...</p> : orders?.length > 0 ?
+              <div>
+                {
+                  orders.slice(0, 3).map((order, index) => (<div className={`py-3 flex justify-between ${index !== 2 && 'border-b'} gap-5`} key={order._id}>
+                    <div className="space-y-1">
 
-                  <div className="flex gap-2 items-center">
-                    <h2 className="font-medium text-lg">{892389}</h2>
-                    <span
-                      className={`py-1 px-2 rounded-sm text-xs font-bold 
+                      <div className="flex gap-2 items-center">
+                        <h2 className="font-medium text-lg">{892389}</h2>
+                        <span
+                          className={`py-1 px-2 rounded-sm text-xs font-bold 
                       ${order.status === 'Order Placed' ? 'bg-blue-100 text-blue-800' : ''} 
                       ${order.status === 'Packing' ? 'bg-yellow-100 text-yellow-800' : ''} 
                       ${order.status === 'Shipped' ? 'bg-purple-100 text-purple-800' : ''} 
                       ${order.status === 'Out for Delivery' ? 'bg-orange-100 text-orange-800' : ''} 
                       ${order.status === 'Delivered' ? 'bg-green-100 text-green-800' : ''}`}
-                    >
-                      {order.status}
-                    </span>
-                  </div>
-                  <div className="flex gap-3">
-                    <div className="text-sm">{order.items[0]?.name}</div>
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      .<div>PKR {formatAmount(order.amount)}</div>.<div>3 items</div>.<div>4 March, 2024</div>.<div>{order.address.firstName} {order.address.lastName}</div>.<div>Lines Area, Karachi</div>
+                        >
+                          {order.status}
+                        </span>
+                      </div>
+                      <div className="flex gap-3">
+                        <div className="text-sm">{order.items[0]?.name}</div>
+                        <div className="flex items-center gap-2 text-xs text-gray-600">
+                          .<div>PKR {formatAmount(order.amount)}</div>.<div>3 items</div>.<div>4 March, 2024</div>.<div>{order.address.firstName} {order.address.lastName}</div>.<div>Lines Area, Karachi</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 text-xs text-gray-600">
+
+                        <p>{order.address.city}</p> <p>{order.address.phone}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <IoMdMore className="text-lg cursor-pointer" />
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 text-xs text-gray-600">
-
-                    <p>{order.address.city}</p> <p>{order.address.phone}</p>
-                  </div>
-                </div>
-                <div>
-                  <IoMdMore className="text-lg cursor-pointer" />
-                </div>
+                  ))
+                }
               </div>
-              ))
-            }
+              : <div className="flex w-full h-full items-center justify-center"> <p className=" text-[#d2d2d2] mb-10 mt-2">You have no orders yet.</p></div>}
+          </div>
+        </Box>
+        <Box>
+          <HeadingLink title="Latest Customers" link='/users' />
+          <div className="flex border-b justify-between items-center py-2 px-2 cursor-pointer hover:bg-gray-100">
+            <div className="flex gap-3 items-center">
+
+              <img src={assets.rolex_yatch_master_1} className="w-10 h-10 rounded-full" />
+              <div>
+                <p>Kashif Ameen</p>
+                <p className="text-xs text-gray-600">Lahore, Punjab</p>
+              </div>
+
             </div>
-            : <div className="flex w-full h-full items-center justify-center"> <p className=" text-[#d2d2d2] mb-10 mt-2">You have no orders yet.</p></div>}
-        </div>
-      </Box>
-      <Box>
-        <HeadingLink title="Latest Customers" />
-      </Box>
+              <p className="text-sm">23 Dec, 2024</p>
+          </div>
+          <div className="flex border-b justify-between items-center py-2 px-2 cursor-pointer hover:bg-gray-100">
+            <div className="flex gap-3 items-center">
+
+              <img src={assets.rolex_yatch_master_1} className="w-10 h-10 rounded-full" />
+              <div>
+                <p>Kashif Ameen</p>
+                <p className="text-xs text-gray-600">Lahore, Punjab</p>
+              </div>
+
             </div>
+              <p className="text-sm">23 Dec, 2024</p>
+          </div>
+          <div className="flex border-b justify-between items-center py-2 px-2 cursor-pointer hover:bg-gray-100">
+            <div className="flex gap-3 items-center">
+
+              <img src={assets.rolex_yatch_master_1} className="w-10 h-10 rounded-full" />
+              <div>
+                <p>Kashif Ameen</p>
+                <p className="text-xs text-gray-600">Lahore, Punjab</p>
+              </div>
+
+            </div>
+              <p className="text-sm">23 Dec, 2024</p>
+          </div>
+        </Box>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Box>

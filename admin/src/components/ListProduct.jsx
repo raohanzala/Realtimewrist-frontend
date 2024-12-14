@@ -10,12 +10,10 @@ import AddProductModal from './AddProductModal';
 import { FaPlus } from "react-icons/fa6";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import Box from './Box';
 import Loader from './Loader';
 import Modal from './Modal';
 import ProductDrawer from './ProductDrawer';
 import ProductItem from './ProductItem';
-import { assets } from '../../../frontend/src/assets/assets';
 
 const ListProduct = () => {
 
@@ -147,18 +145,21 @@ const ListProduct = () => {
       </div>
 
       <div className='relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-
-        <ProductItem
-          key={8934}
-          name={'Rolex Watch'}
-          description={"Quartz Machine, Date Working"}
-          newPrice={7000}
-          oldPrice={3000}
-          id={893298892}
-          image={assets.rolex_yatch_master_1}
-          size={null} />
-
-      </div>
+          {allProducts.length > 0 && (
+            allProducts.map((item) => (
+              <ProductItem
+                key={item._id}
+                name={item.name}
+                description={item.description}
+                newPrice={item.newPrice}
+                oldPrice={item.oldPrice}
+                id={item._id}
+                image={assets.rolex_yatch_master_1}
+                size={item.sizes}
+              />
+            ))
+          )}
+        </div>
 
 
 

@@ -6,7 +6,7 @@ import CartTotal from '../components/CartTotal';
 import toast from 'react-hot-toast';
 import { IoCloseSharp } from 'react-icons/io5'; // Close icon
 
-const CartDrawer = ({ isOpen =true, onClose }) => {
+const CartDrawer = ({ isOpen, onClose }) => {
   const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
@@ -39,8 +39,8 @@ const CartDrawer = ({ isOpen =true, onClose }) => {
   };
 
   return (
-    <div 
-      className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} 
+    <div
+      className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-[9999] shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
     >
       <div className="flex items-center justify-between p-4 border-b">
         <Title text1='YOUR' text2='CART' />
@@ -65,12 +65,12 @@ const CartDrawer = ({ isOpen =true, onClose }) => {
                     )}
                   </div>
                 </div>
-                <input 
-                  onChange={(e) => e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id, item.size, Number(e.target.value))} 
-                  className="w-12 text-center border rounded" 
-                  type="number" 
-                  min={1} 
-                  defaultValue={item.quantity} 
+                <input
+                  onChange={(e) => e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id, item.size, Number(e.target.value))}
+                  className="w-12 text-center border rounded"
+                  type="number"
+                  min={1}
+                  defaultValue={item.quantity}
                 />
                 <button onClick={() => updateQuantity(item._id, item.size, 0)}>
                   <img className='w-5' src={assets.bin_icon} alt="Remove" />
@@ -85,10 +85,10 @@ const CartDrawer = ({ isOpen =true, onClose }) => {
         )}
       </div>
 
-      <div className="p-4 border-t">
+      <div className="p-4 bottom-0 m-auto border-t">
         <CartTotal />
-        <button 
-          onClick={handleCheckout} 
+        <button
+          onClick={handleCheckout}
           className="w-full bg-black text-white py-3 mt-4 text-center uppercase tracking-wider hover:bg-gray-800 transition-colors"
         >
           Proceed to Checkout

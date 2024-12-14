@@ -7,11 +7,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function CategoryItem({categoryName, categoryImg}) {
-
-
   return (
     <Link>
-      <div className="w-36 h-36 rounded-full overflow-hidden relative m-auto">
+      <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden relative m-auto">
         <div className="relative w-full h-full flex items-center justify-center hover:scale-110 duration-300">
           <LazyLoadImage
             effect="blur"
@@ -26,9 +24,6 @@ function CategoryItem({categoryName, categoryImg}) {
           <div>
             <h2 className='lg:text-sm text-gray-50 font-semibold uppercase'>{categoryName}</h2>
           </div>
-          {/* <div className='text-sm text-gray-50 transform translate-x-0 opacity-1 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100'>
-            <FaChevronRight />
-          </div> */}
         </div>
         </div>
       </div>
